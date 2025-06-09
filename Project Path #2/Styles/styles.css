@@ -1,0 +1,390 @@
+@font-face {
+  font-family: Rowdies;
+  font-style: normal;
+  src: url(../Fonts/Rowdies.ttf);
+}
+
+@font-face {
+  font-family: Heebo;
+  font-style: normal;
+  src: url(../Fonts/Heebo.ttf);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: rgb(205, 231, 250);
+}
+
+.container {
+  border-color: black;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+  background-color: aliceblue;
+}
+
+/* #region header */
+
+h1 {
+  font-family: 'Rowdies';
+  color: rgb(69, 116, 209);
+  font-size: 3.3em;
+  margin-block: 30px;
+}
+
+.header-container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* #endregion */
+
+/* #region main */
+.counter {
+  font-family: 'Heebo';
+  font-size: 1.3em;
+  margin: 10px;
+}
+
+.search-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 100%;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+.search-wrapper {
+  position: relative;
+  flex: 1;
+  max-width: 300px;
+}
+
+#searchBar {
+  width: 100%;
+  font-size: 1.2em;
+  padding: 10px 35px 10px 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  outline: none;
+  box-sizing: border-box;
+}
+
+.search-icon {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  pointer-events: none;
+  font-size: 1.2em;
+  color: #888;
+}
+
+.action-icons {
+  display: flex;
+  gap: 10px;
+  margin-left: 10px;
+}
+
+.action-icons img {
+  height: 40px;
+  cursor: pointer;
+}
+
+.phoneBook {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  width: 100%;
+}
+
+.customer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 10px;
+  padding: 10px 20px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.custIMG {
+  height: 125px;
+  margin: 5px;
+  border-radius: 50%;
+}
+
+.custName {
+  font-family: 'Heebo';
+  margin-left: 15px;
+  font-size: 1.5em;
+  flex-grow: 1;
+}
+
+.custActions {
+  display: flex;
+  gap: 10px;
+}
+
+.custActions img {
+  cursor: pointer;
+}
+
+.infoCust {
+  height: 40px;
+  margin-inline: 5px;
+}
+
+.editCust {
+  height: 40px;
+  margin-inline: 5px;
+}
+
+.deleteCust {
+  height: 40px;
+  margin-inline: 5px;
+}
+
+/* #endregion */
+
+/* #region footer */
+footer>span {
+  color: black;
+  font-family: 'Heebo';
+}
+
+footer {
+  color: white;
+  text-align: center;
+  padding: 1em;
+}
+
+/* #endregion */
+
+/* #region popup */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 2000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+  background: white;
+  margin: 10% auto;
+  padding: 2em;
+  border-radius: 10px;
+  width: 80%;
+  max-width: 500px;
+  position: relative;
+}
+
+.modal .close {
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  font-size: 1.5em;
+  cursor: pointer;
+}
+
+/* #endregion */
+
+/* #region Media */
+
+/* Phones (portrait and smaller) */
+@media (max-width: 599px) {
+
+  .counter {
+    font-size: 1.4em;
+    margin: 10px;
+    text-align: center;
+  }
+
+  .container {
+    padding: 2px;
+  }
+
+  #searchBar {
+    width: 80%;
+    font-size: 1.0em;
+  }
+
+  .search-icon {
+    right: 70px;
+    transform: translateY(-56%);
+  }
+
+  .action-icons img {
+    height: 30px;
+  }
+
+  .phoneBook {
+    gap: 0.5em;
+  }
+
+  .customer {
+    padding: 10px 5px;
+  }
+
+  .custName {
+    font-size: 1em;
+  }
+
+  .custIMG {
+    height: 80px;
+    margin: 5px;
+    border-radius: 50%;
+  }
+
+  .infoCust {
+    height: 25px;
+    margin-inline: 5px;
+  }
+
+  .editCust {
+    height: 25px;
+    margin-inline: 5px;
+  }
+
+  .deleteCust {
+    height: 25px;
+    margin-inline: 5px;
+  }
+
+}
+
+/* Tablets (portrait) */
+@media (min-width: 600px) and (max-width: 899px) {
+
+  .counter {
+    font-size: 1.4em;
+    margin: 10px;
+    text-align: center;
+  }
+
+  .container {
+    padding: 2px;
+  }
+
+  #searchBar {
+    width: 100%;
+    font-size: 1.3em;
+  }
+
+  .search-icon {
+    right: 10px;
+    transform: translateY(-56%);
+  }
+
+  .action-icons img {
+    width: 40px;
+    height: 40px;
+  }
+
+  .phoneBook {
+    gap: 0.5em;
+  }
+
+  .customer {
+    padding: 10px 5px;
+  }
+
+  .custName {
+    font-size: 1.5em;
+  }
+
+  .infoCust {
+    height: 40px;
+    margin-inline: 5px;
+  }
+
+  .editCust {
+    height: 40px;
+    margin-inline: 5px;
+  }
+
+  .deleteCust {
+    height: 40px;
+    margin-inline: 5px;
+  }
+
+}
+
+/* Tablets (landscape) */
+@media (min-width: 900px) and (max-width: 1199px) {
+
+  .counter {
+    font-size: 1.4em;
+    margin: 10px;
+  }
+
+  .container {
+    padding: 2px;
+  }
+
+  #searchBar {
+    width: 120%;
+    font-size: 1.5em;
+  }
+
+  .search-icon {
+    right: -50px;
+    transform: translateY(-56%);
+  }
+
+  .action-icons img {
+    width: 50px;
+    height: 50px;
+  }
+
+  .phoneBook {
+    gap: 1.5em;
+  }
+
+  .customer {
+    padding: 10px 5px;
+  }
+
+  .custName {
+    font-size: 2em;
+  }
+
+  .custIMG {
+    height: 150px;
+  }
+
+  .infoCust {
+    height: 40px;
+    margin-inline: 5px;
+  }
+
+  .editCust {
+    height: 40px;
+    margin-inline: 5px;
+  }
+
+  .deleteCust {
+    height: 40px;
+    margin-inline: 5px;
+  }
+
+}
+
+/* #endregion */
