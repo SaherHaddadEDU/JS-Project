@@ -41,17 +41,17 @@ customers.forEach((elem, index) => {
 
   const infoCust = document.createElement('img');
   infoCust.className = "infoCust"
-  infoCust.src = "/IMG/Info.png"
+  infoCust.src = "./IMG/Info.png"
   infoCust.alt = "Info"
 
   const editCust = document.createElement('img');
   editCust.className = "editCust"
-  editCust.src = "/IMG/Edit.png"
+  editCust.src = "./IMG/Edit.png"
   editCust.alt = "Edit"
 
   const deleteCust = document.createElement('img');
   deleteCust.className = "deleteCust"
-  deleteCust.src = "/IMG/Dele.png"
+  deleteCust.src = "./IMG/Dele.png"
   deleteCust.alt = "Delete"
 
   custAction.append(infoCust, editCust, deleteCust)
