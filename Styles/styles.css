@@ -30,6 +30,19 @@ body {
   background-color: aliceblue;
 }
 
+.btn {
+  font-family: 'Heebo';
+  background-color: #0077cc;
+  color: white;
+  border: none;
+  font-size: 0.7em;
+  padding: 0.5em 1em;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 25px;
+  margin-inline: 40%;
+}
+
 /* #region header */
 
 h1 {
@@ -54,7 +67,7 @@ h1 {
   margin: 10px;
 }
 
-.search-container {
+.action-container {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -62,6 +75,7 @@ h1 {
   max-width: 100%;
   padding: 10px;
   box-sizing: border-box;
+  margin-bottom: 20px;
 }
 
 .search-wrapper {
@@ -207,15 +221,24 @@ footer {
   cursor: pointer;
 }
 
-.modalContent{
+.modalContent {
   font-family: 'Heebo';
   margin-left: 15px;
   font-size: 1.5em;
   flex-grow: 1;
 }
 
-.modalContent p{
+.modalContent p {
   margin-block: 10px;
+}
+
+.modalContent input {
+  width: 95%;
+  font-size: 0.9em;
+  padding: 10px 35px 10px 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  outline: none;
 }
 
 /* #endregion */
