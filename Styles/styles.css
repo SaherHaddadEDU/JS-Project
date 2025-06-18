@@ -50,7 +50,7 @@ h1 {
 /* #region main */
 .counter {
   font-family: 'Heebo';
-  font-size: 1.3em;
+  font-size: 1.2em;
   margin: 10px;
 }
 
@@ -146,16 +146,19 @@ h1 {
 .infoCust {
   height: 40px;
   margin-inline: 5px;
+  cursor: pointer;
 }
 
 .editCust {
   height: 40px;
   margin-inline: 5px;
+  cursor: pointer;
 }
 
 .deleteCust {
   height: 40px;
   margin-inline: 5px;
+  cursor: pointer;
 }
 
 /* #endregion */
@@ -186,7 +189,7 @@ footer {
   background-color: rgba(0, 0, 0, 0.5);
 }
 
-.modal-content {
+.modal-popup {
   background: white;
   margin: 10% auto;
   padding: 2em;
@@ -198,10 +201,21 @@ footer {
 
 .modal .close {
   position: absolute;
-  top: 10px;
-  right: 20px;
-  font-size: 1.5em;
+  top: 20px;
+  right: 30px;
+  font-size: 1.2em;
   cursor: pointer;
+}
+
+.modalContent{
+  font-family: 'Heebo';
+  margin-left: 15px;
+  font-size: 1.5em;
+  flex-grow: 1;
+}
+
+.modalContent p{
+  margin-block: 10px;
 }
 
 /* #endregion */
@@ -333,6 +347,7 @@ footer {
   .counter {
     font-size: 1.4em;
     margin: 10px;
+    text-align: center;
   }
 
   .container {
