@@ -1,25 +1,31 @@
+/* טעינת פונטים מותאמים */
 @font-face {
   font-family: Rowdies;
+  /* גופן לכותרות */
   font-style: normal;
   src: url(../Fonts/Rowdies.ttf);
 }
 
 @font-face {
   font-family: Heebo;
+  /* גופן לטקסט רגיל */
   font-style: normal;
   src: url(../Fonts/Heebo.ttf);
 }
 
+/* איפוס ברירת מחדל לכל האלמנטים */
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
+/* צבע רקע כללי */
 body {
   background-color: rgb(205, 231, 250);
 }
 
+/* קונטיינר ראשי – מרכז התוכן עם הצללה */
 .container {
   border-color: black;
   max-width: 1200px;
@@ -30,6 +36,22 @@ body {
   background-color: aliceblue;
 }
 
+.container p {
+  font-size: 1.5em;
+  font-family: 'heebo';
+  margin: 25px;
+}
+
+/* סיידבר (אם קיים) */
+aside {
+  padding-top: 50px;
+  text-align: center;
+  font-size: 1.5em;
+  font-family: 'heebo';
+  margin: 25px;
+}
+
+/* עיצוב כפתורים כלליים */
 .btn {
   font-family: 'Heebo';
   background-color: #0077cc;
@@ -39,12 +61,10 @@ body {
   padding: 0.5em 1em;
   border-radius: 5px;
   cursor: pointer;
-  margin-top: 25px;
-  margin-inline: 40%;
 }
 
 /* #region header */
-
+/* כותרת ראשית */
 h1 {
   font-family: 'Rowdies';
   color: rgb(69, 116, 209);
@@ -52,6 +72,7 @@ h1 {
   margin-block: 30px;
 }
 
+/* מיכל לכותרת – מרכז אותה */
 .header-container {
   display: flex;
   justify-content: center;
@@ -61,12 +82,14 @@ h1 {
 /* #endregion */
 
 /* #region main */
+/* מונה אנשי קשר */
 .counter {
   font-family: 'Heebo';
   font-size: 1.2em;
   margin: 10px;
 }
 
+/* מיכל פעולות (חיפוש, הוספה, מחיקה) */
 .action-container {
   display: flex;
   align-items: center;
@@ -78,6 +101,7 @@ h1 {
   margin-bottom: 20px;
 }
 
+/* אזור החיפוש */
 .search-wrapper {
   position: relative;
   flex: 1;
@@ -94,6 +118,7 @@ h1 {
   box-sizing: border-box;
 }
 
+/* אייקון זכוכית מגדלת בשדה החיפוש */
 .search-icon {
   position: absolute;
   top: 50%;
@@ -104,6 +129,7 @@ h1 {
   color: #888;
 }
 
+/* אזור איקונים (הוספה ומחיקה) */
 .action-icons {
   display: flex;
   gap: 10px;
@@ -115,6 +141,7 @@ h1 {
   cursor: pointer;
 }
 
+/* רשימת אנשי קשר */
 .phoneBook {
   display: flex;
   flex-direction: column;
@@ -125,6 +152,7 @@ h1 {
   width: 100%;
 }
 
+/* כרטיס איש קשר */
 .customer {
   display: flex;
   align-items: center;
@@ -133,21 +161,28 @@ h1 {
   padding: 10px 20px;
   width: 100%;
   box-sizing: border-box;
+  cursor: pointer;
 }
 
+/* תמונת איש קשר */
 .custIMG {
-  height: 125px;
+  aspect-ratio: 1/1;
+  object-fit: cover;
+  width: 125px;
   margin: 5px;
   border-radius: 50%;
 }
 
+/* שם איש קשר */
 .custName {
   font-family: 'Heebo';
   margin-left: 15px;
   font-size: 1.5em;
   flex-grow: 1;
+  font-weight: 550;
 }
 
+/* מיכל כפתורי פעולה */
 .custActions {
   display: flex;
   gap: 10px;
@@ -157,18 +192,9 @@ h1 {
   cursor: pointer;
 }
 
-.infoCust {
-  height: 40px;
-  margin-inline: 5px;
-  cursor: pointer;
-}
-
-.editCust {
-  height: 40px;
-  margin-inline: 5px;
-  cursor: pointer;
-}
-
+/* איקונים למידע/עריכה/מחיקה */
+.infoCust,
+.editCust,
 .deleteCust {
   height: 40px;
   margin-inline: 5px;
@@ -178,6 +204,7 @@ h1 {
 /* #endregion */
 
 /* #region footer */
+/* פוטר */
 footer>span {
   color: black;
   font-family: 'Heebo';
@@ -192,6 +219,8 @@ footer {
 /* #endregion */
 
 /* #region popup */
+/* חלון פופאפ */
+/* שכבת הרקע */
 .modal {
   display: none;
   position: fixed;
@@ -201,8 +230,29 @@ footer {
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.5);
+
+  /* ממרכז את הפופאפ */
+  align-items: center;
+  justify-content: center;
+
+  /* במקרה של תוכן ארוך */
+  overflow-y: auto;
 }
 
+/* מיכל הפופאפ */
+.modal-popup {
+  background: white;
+  padding: 2em;
+  border-radius: 10px;
+  width: 80%;
+  max-width: 500px;
+
+  /* אם התוכן גדול מדי */
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+/* תוכן הפופאפ */
 .modal-popup {
   background: white;
   margin: 10% auto;
@@ -213,6 +263,7 @@ footer {
   position: relative;
 }
 
+/* כפתור סגירה */
 .modal .close {
   position: absolute;
   top: 20px;
@@ -221,6 +272,7 @@ footer {
   cursor: pointer;
 }
 
+/* תוכן המידע */
 .modalContent {
   font-family: 'Heebo';
   margin-left: 15px;
@@ -228,10 +280,7 @@ footer {
   flex-grow: 1;
 }
 
-.modalContent p {
-  margin-block: 10px;
-}
-
+/* עיצוב שדות טופס */
 .modalContent input {
   width: 95%;
   font-size: 0.9em;
@@ -241,13 +290,73 @@ footer {
   outline: none;
 }
 
+/* מבנה טופס */
+.formElem {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  max-width: 50%;
+}
+
+/* מיכל טופס */
+.formContainer {
+  display: flex;
+  flex-wrap: wrap;
+  border-color: black;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+  background-color: aliceblue;
+  justify-content: center;
+}
+
+/* שדה טקסט להערות */
+#editNotes {
+  width: 95%;
+  height: 100px;
+  font-size: 0.9em;
+  padding: 10px 35px 10px 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  outline: none;
+}
+
+/* כפתורי טופס */
+.formBtn {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+/* #endregion */
+
+/* #region Contact/About Pages and Navigation Links */
+/* קישורי ניווט */
+nav {
+  margin-top: 10px;
+  text-align: center;
+}
+
+nav a {
+  font-family: 'Heebo';
+  font-size: 1em;
+  margin: 0 10px;
+  text-decoration: none;
+  color: #0077cc;
+  font-weight: bold;
+}
+
+nav a:hover {
+  text-decoration: underline;
+}
+
 /* #endregion */
 
 /* #region Media */
-
-/* Phones (portrait and smaller) */
+/* התאמות למסכים קטנים (סמארטפונים) */
 @media (max-width: 599px) {
-
   .counter {
     font-size: 1.4em;
     margin: 10px;
@@ -290,26 +399,16 @@ footer {
     border-radius: 50%;
   }
 
-  .infoCust {
-    height: 25px;
-    margin-inline: 5px;
-  }
-
-  .editCust {
-    height: 25px;
-    margin-inline: 5px;
-  }
-
+  .infoCust,
+  .editCust,
   .deleteCust {
     height: 25px;
     margin-inline: 5px;
   }
-
 }
 
-/* Tablets (portrait) */
+/* התאמות לטאבלטים אנכיים */
 @media (min-width: 600px) and (max-width: 899px) {
-
   .counter {
     font-size: 1.4em;
     margin: 10px;
@@ -347,26 +446,16 @@ footer {
     font-size: 1.5em;
   }
 
-  .infoCust {
-    height: 40px;
-    margin-inline: 5px;
-  }
-
-  .editCust {
-    height: 40px;
-    margin-inline: 5px;
-  }
-
+  .infoCust,
+  .editCust,
   .deleteCust {
     height: 40px;
     margin-inline: 5px;
   }
-
 }
 
-/* Tablets (landscape) */
+/* התאמות לטאבלטים לרוחב */
 @media (min-width: 900px) and (max-width: 1199px) {
-
   .counter {
     font-size: 1.4em;
     margin: 10px;
@@ -408,21 +497,46 @@ footer {
     height: 150px;
   }
 
-  .infoCust {
-    height: 40px;
-    margin-inline: 5px;
-  }
-
-  .editCust {
-    height: 40px;
-    margin-inline: 5px;
-  }
-
+  .infoCust,
+  .editCust,
   .deleteCust {
     height: 40px;
     margin-inline: 5px;
   }
+}
 
+/* #endregion */
+
+/* #region Effect css*/
+/* מצב אפקט ויזואלי – רקע אנימטיבי צבעוני */
+body.effect-on {
+  background: linear-gradient(-45deg, #ff0000, #fffb00, #00e1ff, #bb00ff);
+  background-size: 400% 400%;
+  animation: glowingBackground 5s ease infinite;
+  transition: all 0.5s ease;
+}
+
+/* אנימציה לשינוי צבעים */
+@keyframes glowingBackground {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* הכפתור שמפעיל את האפקט לא יושפע */
+.toggleEffect {
+  position: relative;
+  z-index: 2100;
+  height: 40px;
+  cursor: pointer;
 }
 
 /* #endregion */

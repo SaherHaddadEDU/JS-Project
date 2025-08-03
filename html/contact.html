@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Contact Us</title>
+    <!-- קישור לקובץ העיצוב הראשי -->
+    <link rel="stylesheet" href="../Styles/styles.css">
+</head>
+
+<body>
+    <!-- כותרת עליונה לדף יצירת קשר -->
+    <header>
+        <div class="header-container">
+            <h1>Contact Us</h1>
+        </div>
+    </header>
+
+    <!-- תוכן הדף הראשי -->
+    <main>
+        <!-- מיכל שמרכז את טופס יצירת הקשר באמצע -->
+        <div class="formContainer">
+            <!-- מיכל פנימי של הטופס עם עיצוב דומה לפופאפ -->
+            <div class="formElem modalContent">
+                <!-- טופס לשליחת פרטי יצירת קשר -->
+                <form>
+                    <!-- שדה שם מלא (חובה) -->
+                    <label><strong>Full Name: </strong></label>
+                    <input type="text" id="editName" required>
+
+                    <!-- שדה טלפון (חובה) -->
+                    <label><strong>Phone: </strong></label>
+                    <input type="tel" id="editPhone" required>
+
+                    <!-- שדה מייל -->
+                    <label><strong>Email: </strong></label>
+                    <input type="email" id="editEmail">
+
+                    <!-- שדה הודעה -->
+                    <label><strong>Message: </strong></label>
+                    <textarea id="editNotes"></textarea>
+
+                    <!-- כפתור לשליחת הטופס -->
+                    <div class="formBtn">
+                        <button class="btn" type="submit">Send</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <!- פוטר עם ניווט בין דפי האתר -->
+        <footer>
+            <nav>
+                <!-- לינק חזרה לדף הראשי -->
+                <a href="../index.html">Phone Book</a> |
+                <!-- לינק לדף "אודות" -->
+                <a href="about.html">About Us</a>
+            </nav>
+            <span>© 2025 Igor Nikonov & Saher Haddad. All rights reserved.</span>
+        </footer>
+
+</body>
+
+</html>

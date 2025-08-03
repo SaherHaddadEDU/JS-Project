@@ -5,50 +5,70 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Phone Book</title>
-  <link href="./Styles/styles.css" rel="stylesheet">
+
+  <!-- קישור לקובץ ה־CSS הראשי של האפליקציה -->
+  <link href="../Styles/styles.css" rel="stylesheet">
 </head>
 
 <body>
 
+  <!-- כותרת עליונה -->
   <header>
     <div class="header-container">
-      <h1>Phone Book</h1>
+      <h1>Phone Book</h1> <!-- כותרת ראשית של הדף -->
     </div>
   </header>
 
+  <!-- אזור התוכן המרכזי -->
   <main>
     <div class="container">
+      <!-- מונה המציג את מספר אנשי הקשר -->
       <div class="counter">
         <span></span>
       </div>
 
+      <!-- אזור פעולות: חיפוש, הוספה, אפקטים, מחיקת הכל -->
       <div class="action-container">
+        <!-- שדה חיפוש -->
         <div class="search-wrapper">
           <input type="text" id="searchBar" placeholder="Search...">
           <span class="search-icon">🔍︎</span>
         </div>
+        <!-- כפתורי פעולה (אייקונים) -->
         <div class="action-icons">
-          <img class="addCust" src="./IMG/Add.png" alt="Add">
-          <img class="deleteAll" src="./IMG/Dele.png" alt="Delete">
+          <img class="addCust" src="../IMG/Add.png" alt="Add"> <!-- כפתור להוספת איש קשר -->
+          <img class="toggleEffect" src="../IMG/Effect.png" alt="Effect"> <!-- כפתור לאפקט ויזואלי -->
+          <img class="deleteAll" src="../IMG/Dele.png" alt="Delete"> <!-- כפתור למחיקת כל אנשי הקשר -->
         </div>
       </div>
 
-      <ul class="phoneBook">
-      </ul>
+      <!-- רשימת אנשי הקשר (נבנית דינמית ב־JavaScript) -->
+      <ul class="phoneBook"></ul>
     </div>
   </main>
 
+  <!-- פוטר עם קישורי ניווט -->
   <footer>
-    <span>© 2025 Igor Nikonov & Saher Haddad. All rights reserved. </span>
+    <nav>
+      <a href="./html/contact.html">Contact Us</a> |
+      <a href="./html/about.html">About Us</a>
+    </nav>
+    <span>© 2025 Igor Nikonov & Saher Haddad. All rights reserved.</span>
   </footer>
 
+  <!-- פופאפ להצגת מידע, עריכה והוספה של אנשי קשר -->
   <div class="modal" id="articalModal">
     <div class="modal-popup">
+      <!-- כפתור סגירה של הפופאפ -->
       <span id="closeModal" class="close">❌</span>
     </div>
   </div>
 
-  <script src="./JS/js.js"></script>
+  <!-- שכבת Canvas לאפקט Matrix (גשם ירוק) -->
+  <canvas id="matrixEffect"></canvas>
+
+  <!-- קישור לקובץ JavaScript שמנהל את הלוגיקה -->
+  <script src="../JS/js.js"></script>
 
 </body>
 
