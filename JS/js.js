@@ -6,7 +6,7 @@
 const contacts =
   [
     {
-      image: "../IMG/Anna.jpg",
+      image: "./IMG/Anna.jpg",
       fullName: "Anna Bannana",
       age: 21,
       phone: "0558496322",
@@ -26,7 +26,7 @@ const contacts =
       updates: []
     },
     {
-      image: "../IMG/joe.jpg",
+      image: "./IMG/joe.jpg",
       fullName: "Joe Speen",
       age: 29,
       phone: "0546689710",
@@ -36,7 +36,7 @@ const contacts =
       updates: []
     },
     {
-      image: "../IMG/Mai.jpg",
+      image: "./IMG/Mai.jpg",
       fullName: "Mai Yates",
       age: 25,
       phone: "0548265154",
