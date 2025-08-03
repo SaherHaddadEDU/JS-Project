@@ -79,21 +79,21 @@ function showList() {
     // כפתור מידע
     const infoCust = document.createElement('img');
     infoCust.className = "infoCust";
-    infoCust.src = "../IMG/Info.png";
+    infoCust.src = "./IMG/Info.png";
     infoCust.alt = "Info";
     infoCust.setAttribute('data-id', index);
 
     // כפתור עריכה
     const editCust = document.createElement('img');
     editCust.className = "editCust";
-    editCust.src = "../IMG/Edit.png";
+    editCust.src = "./IMG/Edit.png";
     editCust.alt = "Edit";
     editCust.setAttribute('data-id', index);
 
     // כפתור מחיקה
     const deleteCust = document.createElement('img');
     deleteCust.className = "deleteCust";
-    deleteCust.src = "../IMG/Dele.png";
+    deleteCust.src = "./IMG/Dele.png";
     deleteCust.alt = "Delete";
     deleteCust.setAttribute('data-id', index);
 
