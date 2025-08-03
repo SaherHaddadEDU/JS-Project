@@ -312,15 +312,24 @@ function createContactForm(mode, index) {
 
   document.getElementById(isEdit ? 'saveEdit' : 'addContact').addEventListener('click', (e) => {
     e.preventDefault();
-    const fullName = document.getElementById('editName').value.trim();
+    const editName = document.getElementById('editName').value.trim();
     const phone = document.getElementById('editPhone').value.trim();
-    if (!fullName || !phone) {
-      alert(`Please fill in ${!fullName && !phone ? 'Full Name and Phone' : !fullName ? 'Full Name' : 'Phone'} field${!fullName && !phone ? 's' : ''}.`);
+
+    const nameExists = contacts.some((c, i) =>
+      c.fullName.toLowerCase() === editName.toLowerCase() && (!isEdit || i !== index)
+    );
+
+    if (nameExists) {
+      alert(`The contact name ${editName} already exists`);
+      return;
+    }
+    if (!editName || !phone) {
+      alert(`Please fill in ${!editName && !phone ? 'Full Name and Phone' : !editName ? 'Full Name' : 'Phone'} field${!editName && !phone ? 's' : ''}.`);
       return;
     }
 
     const newContact = {
-      fullName,
+      fullName: editName,
       age: document.getElementById('editAge').value.trim(),
       phone,
       address: document.getElementById('editAddress').value.trim(),
