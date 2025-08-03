@@ -67,6 +67,12 @@ function showList() {
     custImg.title = "Portrait Pic";
     custImg.setAttribute('data-id', index);
 
+    // fallback במקרה של קישור שבור
+    custImg.onerror = function () {
+      this.onerror = null; // מונע לולאה אם fallback לא קיים
+      this.src = "./IMG/contact.jpg";
+    };
+
     const custName = document.createElement('span');
     custName.className = "custName";
     custName.textContent = elem.fullName + " - " + elem.phone;
@@ -314,7 +320,7 @@ function createContactForm(mode, index) {
     e.preventDefault();
     const editName = document.getElementById('editName').value.trim();
     const phone = document.getElementById('editPhone').value.trim();
-
+    let editImage = document.getElementById('editImage').value.trim()
     const nameExists = contacts.some((c, i) =>
       c.fullName.toLowerCase() === editName.toLowerCase() && (!isEdit || i !== index)
     );
@@ -327,6 +333,10 @@ function createContactForm(mode, index) {
       alert(`Please fill in ${!editName && !phone ? 'Full Name and Phone' : !editName ? 'Full Name' : 'Phone'} field${!editName && !phone ? 's' : ''}.`);
       return;
     }
+    if (!editImage) {
+      editImage = "./IMG/contact.jpg"
+    }
+
 
     const newContact = {
       fullName: editName,
@@ -334,9 +344,11 @@ function createContactForm(mode, index) {
       phone,
       address: document.getElementById('editAddress').value.trim(),
       email: document.getElementById('editEmail').value.trim(),
-      image: document.getElementById('editImage').value.trim(),
+      image: editImage,
       notes: document.getElementById('editNotes').value.trim()
     };
+
+
 
     removeList();
     if (isEdit) {
