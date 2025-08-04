@@ -195,7 +195,8 @@ h1 {
 /* איקונים למידע/עריכה/מחיקה */
 .infoCust,
 .editCust,
-.deleteCust {
+.deleteCust,
+.favoriteCust {
   height: 40px;
   margin-inline: 5px;
   cursor: pointer;

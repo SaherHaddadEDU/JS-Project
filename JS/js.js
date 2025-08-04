@@ -13,6 +13,7 @@ const contacts =
       email: "Ann959@gmail.com",
       address: "Tel-Aviv",
       notes: "",
+      isFavorite: false,
       updates: []
     },
     {
@@ -23,6 +24,7 @@ const contacts =
       email: "igornikon2901@gmail.com",
       address: "Kiryat-Yam Shapira",
       notes: "Bike rider and climber",
+      isFavorite: false,
       updates: []
     },
     {
@@ -33,6 +35,7 @@ const contacts =
       email: "joe123@walla.com",
       address: "Nesher",
       notes: "",
+      isFavorite: false,
       updates: []
     },
     {
@@ -43,6 +46,7 @@ const contacts =
       email: "mayt@gmail.com",
       address: "Haifa",
       notes: "",
+      isFavorite: false,
       updates: []
     }];
 //#endregion
@@ -55,7 +59,11 @@ const phoneBook = document.querySelector('.phoneBook');
 // 2. יוצר עבור כל איש קשר אלמנט <li> עם תמונה, שם, טלפון וכפתורי פעולה.
 // 3. מציג את מספר אנשי הקשר בכותרת העליונה.
 function showList() {
-  contacts.sort((a, b) => a.fullName.localeCompare(b.fullName));
+  contacts.sort((a, b) => {
+    if (a.isFavorite && !b.isFavorite) return -1;
+    if (!a.isFavorite && b.isFavorite) return 1;
+    return a.fullName.localeCompare(b.fullName)
+  });
   contacts.forEach((elem, index) => {
     const customer = document.createElement('li');
     customer.className = "customer";
@@ -103,7 +111,17 @@ function showList() {
     deleteCust.alt = "Delete";
     deleteCust.setAttribute('data-id', index);
 
-    custAction.append(infoCust, editCust, deleteCust);
+    // כפתור מועדפים 
+    const favoriteCust = document.createElement('img');
+    favoriteCust.className = "favoriteCust";
+    if (elem.isFavorite)
+      favoriteCust.src = "./IMG/Favorite.png";
+    else
+      favoriteCust.src = "./IMG/noFavorite.png";
+    favoriteCust.alt = "Favorite";
+    favoriteCust.setAttribute('data-id', index);
+
+    custAction.append(favoriteCust, infoCust, editCust, deleteCust);
     customer.append(custImg, custName, custAction);
     phoneBook.append(customer);
   });
@@ -165,7 +183,7 @@ phoneBook.addEventListener('click', (e) => {
 
 // אפקט הדגשה בהובר
 phoneBook.addEventListener('mouseover', (e) => {
-  const classes = ['customer', 'custName', 'custAction', 'custIMG', 'infoCust', 'editCust', 'deleteCust'];
+  const classes = ['customer', 'custName', 'custAction', 'custIMG', 'infoCust', 'editCust', 'deleteCust', 'favoriteCust'];
   if (e.target && classes.some(cls => e.target.classList.contains(cls))) {
     mouseOver(e.target.getAttribute('data-id'));
   }
@@ -173,7 +191,7 @@ phoneBook.addEventListener('mouseover', (e) => {
 
 // הסרת הדגשה כשמוציאים את העכבר
 phoneBook.addEventListener('mouseout', (e) => {
-  const classes = ['customer', 'custName', 'custAction', 'custIMG', 'infoCust', 'editCust', 'deleteCust'];
+  const classes = ['customer', 'custName', 'custAction', 'custIMG', 'infoCust', 'editCust', 'deleteCust', 'favoriteCust'];
   if (e.target && classes.some(cls => e.target.classList.contains(cls))) {
     mouseOut(e.target.getAttribute('data-id'));
   }
@@ -224,6 +242,17 @@ function editContact(index) {
 // פותח טופס הוספת איש קשר חדש
 function addContact() {
   createContactForm("add");
+}
+
+function isFavoriteCust(index) {
+  if (contacts[index].isFavorite === true) {
+    contacts[index].isFavorite = false;
+  }
+  else {
+    contacts[index].isFavorite = true
+  }
+  removeList();
+  showList();
 }
 //#endregion
 
@@ -325,7 +354,7 @@ function createContactForm(mode, index) {
       c.fullName.toLowerCase() === editName.toLowerCase() && (!isEdit || i !== index)
     );
 
-    if (nameExists) {
+    if (nameExists && !isEdit) {
       alert(`The contact name ${editName} already exists`);
       return;
     }
@@ -370,4 +399,15 @@ function createContactForm(mode, index) {
 document.querySelector('.toggleEffect').addEventListener('click', () => {
   document.body.classList.toggle('effect-on');
 });
+//#endregion
+
+//#region favorite
+
+phoneBook.addEventListener('click', (e) => {
+  if (e.target.classList.contains('favoriteCust')) {
+    const index = e.target.getAttribute('data-id');
+    isFavoriteCust(index);
+  }
+});
+
 //#endregion
