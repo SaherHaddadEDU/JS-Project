@@ -69,7 +69,6 @@ function showList() {
     return a.fullName.localeCompare(b.fullName)
   });
   const groupSelected = document.querySelector('#groupSort').value.trim();
-  console.log(groupSelected);
   contacts.forEach((elem, index) => {
     if (contacts[index].group === groupSelected || groupSelected === "All") {
       const customer = document.createElement('li');
@@ -90,7 +89,7 @@ function showList() {
 
       const custName = document.createElement('span');
       custName.className = "custName";
-      custName.textContent = elem.fullName + " - " + elem.phone;
+      custName.textContent = elem.fullName + " | " + elem.phone;
       custName.setAttribute('data-id', index);
 
       const custAction = document.createElement('div');
@@ -132,10 +131,8 @@ function showList() {
       customer.append(custImg, custName, custAction);
       phoneBook.append(customer);
     }
+    updateDisplayCounter();
   });
-
-  document.querySelector('.counter span').textContent =
-    contacts.length === 0 ? "No Contacts To Display" : contacts.length + " Contacts";
 }
 
 // מסיר את כל האלמנטים מהרשימה (נדרש לפני ציור חדש כדי למנוע כפילויות)
@@ -286,9 +283,11 @@ inputValue.addEventListener('input', () => {
   const customers = document.querySelectorAll('.customer');
 
   customers.forEach((customer, index) => {
-    const name = contacts[index].fullName.toLowerCase();
+    const id = customer.getAttribute('data-id');
+    const name = contacts[id].fullName.toLowerCase();
     customer.style.display = name.includes(value) ? 'flex' : 'none';
   });
+  updateDisplayCounter()
 });
 //#endregion
 
@@ -356,6 +355,8 @@ function createContactForm(mode, index) {
     </form>`;
 
   modal_content.append(div);
+  // הוספת קוד להציג את הערך הקיים בבחירה
+  document.getElementById("myDropdown").value = contact.group || "";
   document.getElementById('cancel').addEventListener('click', closePopup);
 
   document.getElementById(isEdit ? 'saveEdit' : 'addContact').addEventListener('click', (e) => {
@@ -363,13 +364,16 @@ function createContactForm(mode, index) {
     const editName = document.getElementById('editName').value.trim();
     const phone = document.getElementById('editPhone').value.trim();
     let editImage = document.getElementById('editImage').value.trim()
+    const origName = isEdit ? contacts[index].fullName.toLowerCase() : "";
     const nameExists = contacts.some((c, i) =>
       c.fullName.toLowerCase() === editName.toLowerCase() && (!isEdit || i !== index)
     );
 
-    if (nameExists && !isEdit) {
-      alert(`The contact name ${editName} already exists`);
-      return;
+    if (nameExists) {
+      if (!isEdit || editName.toLowerCase() !== origName) {
+        alert(`The contact name ${editName} already exists`);
+        return;
+      }
     }
     if (!editName || !phone) {
       alert(`Please fill in ${!editName && !phone ? 'Full Name and Phone' : !editName ? 'Full Name' : 'Phone'} field${!editName && !phone ? 's' : ''}.`);
@@ -391,13 +395,23 @@ function createContactForm(mode, index) {
       group: document.getElementById('myDropdown').value.trim()
     };
 
-
-
     removeList();
     if (isEdit) {
-      newContact.updates = contacts[index].updates || [];
-      newContact.updates.push(new Date().toLocaleString());
-      contacts[index] = newContact;
+      const existingContact = contacts[index];
+
+      // עדכון רק השדות הרלוונטיים
+      existingContact.fullName = editName;
+      existingContact.age = document.getElementById('editAge').value.trim();
+      existingContact.phone = phone;
+      existingContact.address = document.getElementById('editAddress').value.trim();
+      existingContact.email = document.getElementById('editEmail').value.trim();
+      existingContact.image = editImage;
+      existingContact.notes = document.getElementById('editNotes').value.trim();
+      existingContact.group = document.getElementById('myDropdown').value.trim();
+
+      // שמירת ההיסטוריה
+      existingContact.updates = existingContact.updates || [];
+      existingContact.updates.push(new Date().toLocaleString());
     } else {
       newContact.updates = [];
       contacts.push(newContact);
@@ -416,17 +430,25 @@ document.querySelector('.toggleEffect').addEventListener('click', () => {
 //#endregion
 
 //#region favorite
-
 phoneBook.addEventListener('click', (e) => {
   if (e.target.classList.contains('favoriteCust')) {
     const index = e.target.getAttribute('data-id');
     isFavoriteCust(index);
   }
 });
-
 //#endregion
 
 document.querySelector('#groupSort').addEventListener('change', (e) => {
   removeList()
   showList()
 })
+
+function updateDisplayCounter() {
+  const custumers = document.querySelectorAll('.customer');
+  let count = 0;
+  custumers.forEach(cust => {
+    if (cust.style.display !== 'none') count++;
+  });
+  document.querySelector('.counter span').textContent =
+    count === 0 ? "No Contacts To Display" : `${count} Contacts`;
+}

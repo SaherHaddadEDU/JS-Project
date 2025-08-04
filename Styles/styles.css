@@ -426,6 +426,10 @@ nav a:hover {
     height: 20px;
     margin-inline: 1px;
   }
+
+  .groupSortDiv {
+    transform: translateX(0%);
+  }
 }
 
 /* התאמות לטאבלטים אנכיים */
@@ -473,6 +477,10 @@ nav a:hover {
   .favoriteCust {
     height: 40px;
     margin-inline: 5px;
+  }
+
+  .groupSortDiv {
+    transform: translateX(0%);
   }
 }
 
@@ -527,6 +535,10 @@ nav a:hover {
     height: 40px;
     margin-inline: 5px;
   }
+
+  .groupSortDiv {
+    transform: translateX(0%);
+  }
 }
 
 /* #endregion */
@@ -534,7 +546,7 @@ nav a:hover {
 /* #region Effect css*/
 /* מצב אפקט ויזואלי – רקע אנימטיבי צבעוני */
 body.effect-on {
-  background: linear-gradient(-45deg, #ff0000, #fffb00, #00e1ff, #bb00ff);
+  background: linear-gradient(-45deg, #ff0000, #f2ff00, #00ffc3, #0d00ff);
   background-size: 400% 400%;
   animation: glowingBackground 5s ease infinite;
   transition: all 0.5s ease;
