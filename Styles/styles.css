@@ -101,6 +101,24 @@ h1 {
   margin-bottom: 20px;
 }
 
+/* מיון לפי קבוצה */
+#groupSort {
+  position: relative;
+  font-family: 'Heebo';
+  font-size: 1.1em;
+  border-radius: 5px;
+}
+
+.groupSortDiv {
+  transform: translateX(-150%);
+}
+
+.action-container label {
+  font-family: 'Heebo';
+  font-size: 1.2em;
+
+}
+
 /* אזור החיפוש */
 .search-wrapper {
   position: relative;
@@ -403,7 +421,8 @@ nav a:hover {
 
   .infoCust,
   .editCust,
-  .deleteCust {
+  .deleteCust,
+  .favoriteCust {
     height: 20px;
     margin-inline: 1px;
   }
@@ -450,7 +469,8 @@ nav a:hover {
 
   .infoCust,
   .editCust,
-  .deleteCust {
+  .deleteCust,
+  .favoriteCust {
     height: 40px;
     margin-inline: 5px;
   }
@@ -502,7 +522,8 @@ nav a:hover {
 
   .infoCust,
   .editCust,
-  .deleteCust {
+  .deleteCust,
+  .favoriteCust {
     height: 40px;
     margin-inline: 5px;
   }

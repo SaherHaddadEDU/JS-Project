@@ -34,6 +34,16 @@
           <input type="text" id="searchBar" placeholder="Search...">
           <span class="search-icon">🔍︎</span>
         </div>
+        <div class="groupSortDiv">
+          <label id="groupLabel" for="groupSort">Group:</label>
+          <select id="groupSort" name="myOption">
+            <option value="All">All</option>
+            <option value="">No Group</option>
+            <option value="Family">Family</option>
+            <option value="Friend">Friend</option>
+            <option value="Work">Work</option>
+          </select>
+        </div>
         <!-- כפתורי פעולה (אייקונים) -->
         <div class="action-icons">
           <img class="toggleEffect" src="./IMG/Effect.png" alt="Effect"> <!-- כפתור לאפקט ויזואלי -->
@@ -41,7 +51,6 @@
           <img class="deleteAll" src="./IMG/Dele.png" alt="Delete"> <!-- כפתור למחיקת כל אנשי הקשר -->
         </div>
       </div>
-
       <!-- רשימת אנשי הקשר (נבנית דינמית ב־JavaScript) -->
       <ul class="phoneBook"></ul>
     </div>

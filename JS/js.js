@@ -13,6 +13,7 @@ const contacts =
       email: "Ann959@gmail.com",
       address: "Tel-Aviv",
       notes: "",
+      group: "",
       isFavorite: false,
       updates: []
     },
@@ -24,6 +25,7 @@ const contacts =
       email: "igornikon2901@gmail.com",
       address: "Kiryat-Yam Shapira",
       notes: "Bike rider and climber",
+      group: "",
       isFavorite: false,
       updates: []
     },
@@ -35,6 +37,7 @@ const contacts =
       email: "joe123@walla.com",
       address: "Nesher",
       notes: "",
+      group: "",
       isFavorite: false,
       updates: []
     },
@@ -46,6 +49,7 @@ const contacts =
       email: "mayt@gmail.com",
       address: "Haifa",
       notes: "",
+      group: "",
       isFavorite: false,
       updates: []
     }];
@@ -64,66 +68,70 @@ function showList() {
     if (!a.isFavorite && b.isFavorite) return 1;
     return a.fullName.localeCompare(b.fullName)
   });
+  const groupSelected = document.querySelector('#groupSort').value.trim();
+  console.log(groupSelected);
   contacts.forEach((elem, index) => {
-    const customer = document.createElement('li');
-    customer.className = "customer";
-    customer.setAttribute('data-id', index);
+    if (contacts[index].group === groupSelected || groupSelected === "All") {
+      const customer = document.createElement('li');
+      customer.className = "customer";
+      customer.setAttribute('data-id', index);
 
-    const custImg = document.createElement('img');
-    custImg.className = "custIMG";
-    custImg.src = elem.image;
-    custImg.title = "Portrait Pic";
-    custImg.setAttribute('data-id', index);
+      const custImg = document.createElement('img');
+      custImg.className = "custIMG";
+      custImg.src = elem.image;
+      custImg.title = "Portrait Pic";
+      custImg.setAttribute('data-id', index);
 
-    // fallback במקרה של קישור שבור
-    custImg.onerror = function () {
-      this.onerror = null; // מונע לולאה אם fallback לא קיים
-      this.src = "./IMG/contact.jpg";
-    };
+      // fallback במקרה של קישור שבור
+      custImg.onerror = function () {
+        this.onerror = null; // מונע לולאה אם fallback לא קיים
+        this.src = "./IMG/contact.jpg";
+      };
 
-    const custName = document.createElement('span');
-    custName.className = "custName";
-    custName.textContent = elem.fullName + " - " + elem.phone;
-    custName.setAttribute('data-id', index);
+      const custName = document.createElement('span');
+      custName.className = "custName";
+      custName.textContent = elem.fullName + " - " + elem.phone;
+      custName.setAttribute('data-id', index);
 
-    const custAction = document.createElement('div');
-    custAction.className = "custAction";
-    custAction.setAttribute('data-id', index);
+      const custAction = document.createElement('div');
+      custAction.className = "custAction";
+      custAction.setAttribute('data-id', index);
 
-    // כפתור מידע
-    const infoCust = document.createElement('img');
-    infoCust.className = "infoCust";
-    infoCust.src = "./IMG/Info.png";
-    infoCust.alt = "Info";
-    infoCust.setAttribute('data-id', index);
+      // כפתור מידע
+      const infoCust = document.createElement('img');
+      infoCust.className = "infoCust";
+      infoCust.src = "./IMG/Info.png";
+      infoCust.alt = "Info";
+      infoCust.setAttribute('data-id', index);
 
-    // כפתור עריכה
-    const editCust = document.createElement('img');
-    editCust.className = "editCust";
-    editCust.src = "./IMG/Edit.png";
-    editCust.alt = "Edit";
-    editCust.setAttribute('data-id', index);
+      // כפתור עריכה
+      const editCust = document.createElement('img');
+      editCust.className = "editCust";
+      editCust.src = "./IMG/Edit.png";
+      editCust.alt = "Edit";
+      editCust.setAttribute('data-id', index);
 
-    // כפתור מחיקה
-    const deleteCust = document.createElement('img');
-    deleteCust.className = "deleteCust";
-    deleteCust.src = "./IMG/Dele.png";
-    deleteCust.alt = "Delete";
-    deleteCust.setAttribute('data-id', index);
+      // כפתור מחיקה
+      const deleteCust = document.createElement('img');
+      deleteCust.className = "deleteCust";
+      deleteCust.src = "./IMG/Dele.png";
+      deleteCust.alt = "Delete";
+      deleteCust.setAttribute('data-id', index);
 
-    // כפתור מועדפים 
-    const favoriteCust = document.createElement('img');
-    favoriteCust.className = "favoriteCust";
-    if (elem.isFavorite)
-      favoriteCust.src = "./IMG/Favorite.png";
-    else
-      favoriteCust.src = "./IMG/noFavorite.png";
-    favoriteCust.alt = "Favorite";
-    favoriteCust.setAttribute('data-id', index);
+      // כפתור מועדפים 
+      const favoriteCust = document.createElement('img');
+      favoriteCust.className = "favoriteCust";
+      if (elem.isFavorite)
+        favoriteCust.src = "./IMG/Favorite.png";
+      else
+        favoriteCust.src = "./IMG/noFavorite.png";
+      favoriteCust.alt = "Favorite";
+      favoriteCust.setAttribute('data-id', index);
 
-    custAction.append(favoriteCust, infoCust, editCust, deleteCust);
-    customer.append(custImg, custName, custAction);
-    phoneBook.append(customer);
+      custAction.append(favoriteCust, infoCust, editCust, deleteCust);
+      customer.append(custImg, custName, custAction);
+      phoneBook.append(customer);
+    }
   });
 
   document.querySelector('.counter span').textContent =
@@ -183,17 +191,15 @@ phoneBook.addEventListener('click', (e) => {
 
 // אפקט הדגשה בהובר
 phoneBook.addEventListener('mouseover', (e) => {
-  const classes = ['customer', 'custName', 'custAction', 'custIMG', 'infoCust', 'editCust', 'deleteCust', 'favoriteCust'];
-  if (e.target && classes.some(cls => e.target.classList.contains(cls))) {
-    mouseOver(e.target.getAttribute('data-id'));
+  if (e.target.closest('.customer')) {
+    mouseOver(e.target);
   }
 });
 
 // הסרת הדגשה כשמוציאים את העכבר
 phoneBook.addEventListener('mouseout', (e) => {
-  const classes = ['customer', 'custName', 'custAction', 'custIMG', 'infoCust', 'editCust', 'deleteCust', 'favoriteCust'];
-  if (e.target && classes.some(cls => e.target.classList.contains(cls))) {
-    mouseOut(e.target.getAttribute('data-id'));
+  if (e.target.closest('.customer')) {
+    mouseOut(e.target);
   }
 });
 //#endregion
@@ -218,6 +224,8 @@ function showInfo(index) {
     div.innerHTML += `<p><strong>Address: </strong> ${contacts[index].address}</p>`;
   if (contacts[index].notes)
     div.innerHTML += `<p><strong>Notes: </strong> ${contacts[index].notes}</p>`;
+  if (contacts[index].group && contacts[index].group != "All")
+    div.innerHTML += `<p><strong>Group: </strong> ${contacts[index].group}</p>`
   if (contacts[index].updates && contacts[index].updates.length > 0) {
     div.innerHTML += `<p><strong>Update History:</strong></p>`;
     contacts[index].updates.forEach((time, i) => {
@@ -258,17 +266,15 @@ function isFavoriteCust(index) {
 
 //#region UI Effects Hover
 // משנה צבע רקע בזמן מעבר עכבר כדי לסמן פריט
-function mouseOver(index) {
-  const el = document.querySelectorAll('.customer')[index];
-  el.style.backgroundColor = "#ccc";
-  el.style.transition = "0.5s background-color";
+function mouseOver(target) {
+  target.closest('.customer').style.backgroundColor = "#ccc";
+  target.closest('.customer').style.transition = "0.5s background-color";
 }
 
 // מחזיר את צבע הרקע כשהעכבר יוצא
-function mouseOut(index) {
-  const el = document.querySelectorAll('.customer')[index];
-  el.style.backgroundColor = "aliceblue";
-  el.style.transition = "0.5s background-color";
+function mouseOut(target) {
+  target.closest('.customer').style.backgroundColor = "aliceblue";
+  target.closest('.customer').style.transition = "0.5s background-color";
 }
 //#endregion
 
@@ -333,6 +339,13 @@ function createContactForm(mode, index) {
       <label><strong>Email: </strong></label>
       <input type="email" id="editEmail" value="${contact.email}">
       <label><strong>Image URL: </strong></label>
+      <label for="myDropdown">Group:</label>
+      <select id="myDropdown" name="myOption">
+        <option value="">No Group</option>
+        <option value="Family">Family</option>
+        <option value="Friend">Friend</option>
+        <option value="Work">Work</option>
+      </select>
       <input type="url" id="editImage" value="${contact.image}">
       <label><strong>Notes: </strong></label>
       <textarea id="editNotes">${contact.notes}</textarea>
@@ -374,7 +387,8 @@ function createContactForm(mode, index) {
       address: document.getElementById('editAddress').value.trim(),
       email: document.getElementById('editEmail').value.trim(),
       image: editImage,
-      notes: document.getElementById('editNotes').value.trim()
+      notes: document.getElementById('editNotes').value.trim(),
+      group: document.getElementById('myDropdown').value.trim()
     };
 
 
@@ -411,3 +425,8 @@ phoneBook.addEventListener('click', (e) => {
 });
 
 //#endregion
+
+document.querySelector('#groupSort').addEventListener('change', (e) => {
+  removeList()
+  showList()
+})
