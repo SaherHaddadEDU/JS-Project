@@ -101,12 +101,19 @@ h1 {
   margin-bottom: 20px;
 }
 
+#myDropdown {
+  font-size: 0.8em;
+  font-family: 'Heebo';
+  border-radius: 5px;
+  margin-block: 10px;
+}
+
 /* מיון לפי קבוצה */
 #groupSort {
   position: relative;
   font-family: 'Heebo';
   font-size: 1.1em;
-  border-radius: 5px;
+  border-radius: 10px;
 }
 
 .groupSortDiv {
@@ -334,13 +341,42 @@ footer {
 /* שדה טקסט להערות */
 #editNotes {
   width: 95%;
-  height: 100px;
+  height: 110px;
   font-size: 0.9em;
   padding: 10px 35px 10px 10px;
   border-radius: 5px;
   border: 1px solid #ccc;
   outline: none;
+  resize: none;
 }
+
+#uploadImageLabel {
+  display: block;
+  font-size: 16.8px;
+  width: fit-content;
+  background: #0077cc;
+  color: #fff;
+  border-radius: 5px;
+  margin-block: 10px;
+  padding: 12px;
+  cursor: pointer;
+}
+
+#uploadImage {
+  display: block;
+}
+
+.file-input::-webkit-file-upload-button {
+  visibility: hidden;
+  /* מסתיר את הכפתור */
+}
+
+.file-input::before {
+  content: '📂';
+  /* אפשר לשים אייקון מותאם */
+  margin-right: -130px;
+}
+
 
 /* כפתורי טופס */
 .formBtn {
@@ -565,14 +601,6 @@ body.effect-on {
   100% {
     background-position: 0% 50%;
   }
-}
-
-/* הכפתור שמפעיל את האפקט לא יושפע */
-.toggleEffect {
-  position: relative;
-  z-index: 2100;
-  height: 40px;
-  cursor: pointer;
 }
 
 /* #endregion */
