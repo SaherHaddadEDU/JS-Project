@@ -55,3 +55,14 @@ function showInfo(index) {
     }
     modal_content.append(div);
 }
+
+function openCustImage(index) {
+    document.getElementById('articalModal').style.display = 'block';
+    document.body.style.overflow = 'hidden';
+
+    const modal_content = document.querySelector('.modal-popup');
+    const div = document.createElement('div');
+    div.className = 'modalContent';
+    div.innerHTML = `<img class="openCustImage" src=${contacts[index].image} title="Portrait Pic" data-id=${index}>`
+    modal_content.append(div);
+}

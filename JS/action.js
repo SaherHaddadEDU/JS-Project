@@ -43,9 +43,12 @@ phoneBook.addEventListener('mouseout', (e) => {
 
 // מנהל את כל האירועים של לחיצות על פריטי הרשימה (מידע, עריכה, מחיקה)
 phoneBook.addEventListener('click', (e) => {
-    const classes = ['customer', 'custName', 'custAction', 'custIMG', 'infoCust'];
+    const classes = ['customer', 'custName', 'custAction', 'infoCust'];
     if (e.target && classes.some(cls => e.target.classList.contains(cls))) {
         showInfo(e.target.getAttribute('data-id')); // הצגת מידע
+    }
+    else if (e.target && e.target.className === 'custIMG') {
+        openCustImage(e.target.getAttribute('data-id'));//הצגת תמונה של האיש קשר
     }
     else if (e.target && e.target.tagName === 'IMG' && e.target.className === 'editCust') {
         editContact(e.target.getAttribute('data-id')); // מעבר לטופס עריכה

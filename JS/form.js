@@ -76,7 +76,8 @@ function createContactForm(mode, index) {
         e.preventDefault();
         const editName = document.getElementById('editName').value.trim();
         const phone = document.getElementById('editPhone').value.trim();
-        let editImage = document.getElementById('editImage').value.trim()
+        let editImage = document.getElementById('editImage').value.trim();
+        const age = document.getElementById('editAge').value.trim();
         const uploadFile = uploadInput.files[0];
         const origName = isEdit ? contacts[index].fullName.toLowerCase() : "";
         const origPhone = isEdit ? contacts[index].phone : "";
@@ -87,15 +88,19 @@ function createContactForm(mode, index) {
             c.phone === phone && (!isEdit || i !== index)
         );
 
+        if (age < 1 || age > 120) {
+            alert(`Age must be between 1 and 120.`);
+            return;
+        }
         if (phoneExists) {
             if (!isEdit || phone !== origPhone) {
-                alert(`The Phone number ${phone} already exists`);
+                alert(`The Phone number ${phone} already exists.`);
                 return;
             }
         }
         if (nameExists) {
             if (!isEdit || editName.toLowerCase() !== origName) {
-                alert(`The contact name ${editName} already exists`);
+                alert(`The contact name ${editName} already exists.`);
                 return;
             }
         }

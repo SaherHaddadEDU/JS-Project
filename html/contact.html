@@ -3,6 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact Us</title>
     <!-- קישור לקובץ העיצוב הראשי -->
     <link rel="stylesheet" href="../Styles/styles.css">
@@ -25,19 +26,19 @@
                 <!-- טופס לשליחת פרטי יצירת קשר -->
                 <form>
                     <!-- שדה שם מלא (חובה) -->
-                    <label><strong>Full Name: </strong></label>
+                    <label for="editName"><strong>Full Name: </strong></label>
                     <input type="text" id="editName" required>
 
                     <!-- שדה טלפון (חובה) -->
-                    <label><strong>Phone: </strong></label>
+                    <label for="editPhone"><strong>Phone: </strong></label>
                     <input type="tel" id="editPhone" required>
 
                     <!-- שדה מייל -->
-                    <label><strong>Email: </strong></label>
+                    <label for="editEmail"><strong>Email: </strong></label>
                     <input type="email" id="editEmail">
 
                     <!-- שדה הודעה -->
-                    <label><strong>Message: </strong></label>
+                    <label for="editNotes"><strong>Message: </strong></label>
                     <textarea id="editNotes"></textarea>
 
                     <!-- כפתור לשליחת הטופס -->

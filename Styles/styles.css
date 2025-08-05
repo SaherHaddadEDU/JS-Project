@@ -306,6 +306,16 @@ footer {
   flex-grow: 1;
 }
 
+.openCustImage {
+  height: 410px;
+  width: 410px;
+  aspect-ratio: 1/1;
+  object-fit: cover;
+  border-radius: 5px;
+  margin-top: 20px;
+
+}
+
 /* עיצוב שדות טופס */
 .modalContent input {
   width: 95%;
@@ -396,7 +406,7 @@ nav {
 
 nav a {
   font-family: 'Heebo';
-  font-size: 1em;
+  font-size: 1.3em;
   margin: 0 10px;
   text-decoration: none;
   color: #0077cc;
@@ -411,7 +421,7 @@ nav a:hover {
 
 /* #region Media */
 /* התאמות למסכים קטנים (סמארטפונים) */
-@media (max-width: 599px) {
+@media (max-width: 667px) {
   .counter {
     font-size: 1.4em;
     margin: 10px;
@@ -419,21 +429,44 @@ nav a:hover {
   }
 
   .container {
-    padding: 2px;
+    padding: 20px;
+  }
+
+  .action-container {
+    display: flex;
+    flex-direction: column-reverse;
+    text-align: center;
   }
 
   #searchBar {
-    width: 80%;
+    width: 100%;
     font-size: 1.0em;
   }
 
+  .groupSortDiv {
+    position: relative;
+    right: 75px;
+    bottom: 34px;
+    transform: translateX(0%);
+  }
+
+  .search-wrapper {
+    width: 100%;
+  }
+
   .search-icon {
-    right: 70px;
-    transform: translateY(-56%);
+    right: 10px;
+    transform: translateY(-55%);
+  }
+
+  .action-icons {
+    position: relative;
+    left: 85px;
+
   }
 
   .action-icons img {
-    height: 30px;
+    height: 40px;
   }
 
   .phoneBook {
@@ -442,15 +475,19 @@ nav a:hover {
 
   .customer {
     padding: 10px 5px;
+    flex-direction: column;
+    gap: 10px;
+    border-top: 2px solid rgb(170, 170, 170);
+    border-radius: 0px;
   }
 
   .custName {
-    font-size: 0.9em;
+    font-size: 1.3em;
   }
 
   .custIMG {
-    height: 80px;
-    width: 80px;
+    height: 150px;
+    width: 150px;
     margin: 5px;
     border-radius: 50%;
   }
@@ -459,17 +496,68 @@ nav a:hover {
   .editCust,
   .deleteCust,
   .favoriteCust {
-    height: 20px;
-    margin-inline: 1px;
+    height: 30px;
+    margin-inline: 10px;
   }
 
-  .groupSortDiv {
-    transform: translateX(0%);
+  .modalContent {
+    font-size: 1.0em;
+    margin-left: 0px;
   }
+
+  #closeModal {
+    font-size: 1.0em;
+  }
+
+  #uploadImageLabel {
+    font-size: 0.8em
+  }
+
+  .file-input::before {
+    margin-right: -70px;
+  }
+
+  .formBtn {
+    font-size: 1.3em;
+    gap: 40px;
+  }
+
+  .openCustImage {
+    width: 100%;
+    height: auto;
+
+  }
+
+  /* Contact Us */
+
+  .formElem {
+    max-width: 95%;
+  }
+
+  .btn {
+    font-size: 0.8em;
+  }
+
+  /* About Us */
+
+  .container {
+    padding: 10px;
+  }
+
+  .container p {
+    margin: 0px;
+    margin-block: 10px;
+  }
+
+  .container aside {
+    margin: 0px;
+    font-size: 1.0em;
+  }
+
 }
 
 /* התאמות לטאבלטים אנכיים */
-@media (min-width: 600px) and (max-width: 899px) {
+@media (min-width: 668px) and (max-width: 899px) {
   .counter {
     font-size: 1.4em;
     margin: 10px;
@@ -517,6 +605,16 @@ nav a:hover {
 
   .groupSortDiv {
     transform: translateX(0%);
+  }
+
+  /* Contact Us */
+
+  .formElem {
+    max-width: 75%;
+  }
+
+  .btn {
+    font-size: 0.8em;
   }
 }
 
@@ -574,6 +672,30 @@ nav a:hover {
 
   .groupSortDiv {
     transform: translateX(0%);
+  }
+
+  /* Contact Us */
+
+  .formElem {
+    max-width: 60%;
+  }
+
+  .btn {
+    font-size: 0.8em;
+  }
+
+  /* About Us */
+
+  .container p {
+    font-size: 2em;
+  }
+
+  .container aside {
+    font-size: 1.6em;
+  }
+
+  footer nav {
+    font-size: 1.0em;
   }
 }
 

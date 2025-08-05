@@ -11,7 +11,8 @@ inputValue.addEventListener('input', () => {
   customers.forEach((customer) => {
     const id = customer.getAttribute('data-id');
     const name = contacts[id].fullName.toLowerCase();
-    customer.style.display = name.includes(value) ? 'flex' : 'none';
+    const phone = contacts[id].phone;
+    customer.style.display = name.includes(value) || phone.includes(value) ? 'flex' : 'none';
   });
   updateDisplayCounter()
 });

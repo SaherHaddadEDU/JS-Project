@@ -51,5 +51,53 @@ const contacts =
             group: "",
             isFavorite: false,
             updates: []
+        },
+        {
+            image: "./IMG/Lior.avif",
+            fullName: "Lior Itovich",
+            age: 27,
+            phone: "0546649117",
+            email: "itovich@gmail.com",
+            address: "Kiryat Haim",
+            notes: "Love to play video games",
+            group: "Friend",
+            isFavorite: true,
+            updates: []
+        },
+        {
+            image: "./IMG/Mice.jpg",
+            fullName: "Mickey Mouse",
+            age: 35,
+            phone: "0566666666",
+            email: "MMM@yahoo.com",
+            address: "21 JumpStreet",
+            notes: "Leader of the MMM",
+            group: "Work",
+            isFavorite: true,
+            updates: []
+        },
+        {
+            image: "./IMG/Vlad.jpg",
+            fullName: "Vlad Pupkin",
+            age: 43,
+            phone: "0551596321",
+            email: "pupVlad@mail.ru",
+            address: "Tel-Baruch",
+            notes: "Love my Tatiana <3",
+            group: "Family",
+            isFavorite: false,
+            updates: []
+        },
+        {
+            image: "./IMG/Tatiana.jpg",
+            fullName: "Tatiana Pupkina",
+            age: 10,
+            phone: "0551569123",
+            email: "yanP@mail.ru",
+            address: "Tel-Baruch",
+            notes: "Love my vladik <3",
+            group: "Family",
+            isFavorite: false,
+            updates: []
         }];
 //#endregion
