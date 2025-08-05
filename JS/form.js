@@ -48,9 +48,10 @@ function createContactForm(mode, index) {
       <input type="email" id="editEmail" value="${contact.email}">
       <label id="myDropdownLabel" for="myDropdown"><strong>Group:</strong></label>
       <select id="myDropdown" name="myOption">
+        <option value="Favorites">Favorites</option>
         <option value="">No Group</option>
         <option value="Family">Family</option>
-        <option value="Friend">Friend</option>
+        <option value="Friends">Friends</option>
         <option value="Work">Work</option>
       </select><br>
       <label for="editImage"><strong>Image URL: </strong></label>

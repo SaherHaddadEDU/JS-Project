@@ -14,7 +14,7 @@ function showList() {
     });
     const groupSelected = document.querySelector('#groupSort').value.trim();
     contacts.forEach((elem, index) => {
-        if (contacts[index].group === groupSelected || groupSelected === "All") {
+        if (contacts[index].group === groupSelected || contacts[index].isFavorite && groupSelected === "Favorites" || groupSelected === "All") {
             const customer = document.createElement('li');
             customer.className = "customer";
             customer.setAttribute('data-id', index);
